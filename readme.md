@@ -24,6 +24,10 @@ For CSE404-Group1 members
     
 * run your mysql server (and also apache if you want to access it with apache server) and create a new database and name it **kom_e_kinun_db**
 
+* run this command to migrate(create tables) 
+
+      php artisan migrate
+
 * now run the **API** with this command 
 
       php atrisan serve
