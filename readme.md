@@ -32,7 +32,7 @@ For CSE404-Group1 members
       
 ### Errors you might have:
 
-####1071 specified key was too long
+#### 1071 specified key was too long
 
 edit your AppServiceProvider.php file and inside the boot method set a default string length:
 
