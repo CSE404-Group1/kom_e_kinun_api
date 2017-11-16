@@ -24,7 +24,7 @@ class CreateItemsTable extends Migration
             $table->dateTimeTz('offer_end_date');
             $table->integer('quantity')->nullable();
             $table->string('offer_description')->nullable();
-            $table->integer('seller_id');
+            $table->integer('seller_id')->nullable();
             $table->string('brand_name');
             $table->string('product_origin_page')->nullable();
             $table->string('catagory');
