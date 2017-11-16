@@ -17,14 +17,6 @@ For CSE404-Group1 members
 
       composer install
     
-* now open the **.env** file and replace these lines 
-
-      DB_CONNECTION=mysql
-      DB_HOST=127.0.0.1
-      DB_PORT=3306
-      DB_DATABASE=kom_e_kinun_db
-      DB_USERNAME=root
-      DB_PASSWORD=
     
 * run your mysql server (and also apache if you want to access it with apache server) and create a new database and name it **kom_e_kinun_db**
 
