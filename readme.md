@@ -6,6 +6,7 @@ For CSE404-Group1 members
 - [The API](#the-api)
     - [Register](#register)
     - [Login](#login)
+    - [Store Item](#store-item)
 - [Errors you might have](#errors-you-might-have)
     - [1071 specified key was too long](#1071-specified-key-was-too-long)
 
