@@ -74,7 +74,7 @@ Body(example):
 		"is_premium" : false
 	}
       
-if successful a new entry in user table will be created and server will response the user details json
+if successful a new entry in `users` table will be created and server will response the user details(json)
 
 ### Login
 
@@ -138,6 +138,48 @@ This will return all the info we need,
         "created_at": "2017-11-16 14:15:17",
         "updated_at": "2017-11-16 14:15:17"
     }
+    
+### Store Item
+
+To Store a new Item after logging in the Request url : http://127.0.0.1:8000/api/items
+> http://127.0.0.1:8000 is the default url when you run it on your computer
+
+Request Type: **POST**
+
+Headers: 
+
+    [{"key":"Accept","value":"application/json","description":""}]
+    [{"key":"Content-Type","value":"application/json","description":""}]
+    [{"key":"Authorization","value":"Bearer access_token","description":""}]
+    
+Body(example):
+
+      {
+		"name": "demoItem2",
+		"description": "",
+		"actual_price": 250.00,
+		"sale_price": 120.00,
+		"offer_start_date": "2017-11-15 23:59:59",
+		"offer_end_date": "2017-11-20 23:59:59",
+		"quantity": 20,
+		"offer_description" : "",
+		"brand_name" : "demo",
+		"product_origin_page" : "",
+		"catagory" : "demo",
+		"sub_catagory_1" : "sub-demo",
+		"sub_catagory_2" : "sub-demo",
+		"sub_catagory_3" : "sub-demo",
+		"keywords": "demo",
+		"is_featured" : false
+	}
+    
+if successful a new entry in `items` table will be created and server will response the Item details(json).
+
+if the user is not authorized or if we dont send the `Authorization` header the server will return 
+
+      {
+          "error": "Unauthenticated."
+      }
 
 ____
 
