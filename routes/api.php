@@ -18,3 +18,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 Route::post('/register', 'RegisterController@register');
+
+Route::group(['prefix' => 'items'], function(){
+  Route::post('/','ItemController@store')->middleware('auth:api');
+});

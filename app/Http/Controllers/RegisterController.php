@@ -24,5 +24,7 @@ class RegisterController extends Controller
         $user->is_premium = $request->is_premium;
 
         $user->save();
+
+        return $user;
     }
 }

@@ -27,7 +27,7 @@ class StoreUserRequest extends FormRequest
             'username' => 'required|max:255',
             'email' => 'required|email|max:255|unique:users',
             'password' => 'required|min:6',
-            'description' => '',
+            'description' => 'max:2000',
             'phone_num' => 'required|alpha_dash|min:7',
             'facebook_page' => 'url|unique:users',
             'location' => '',
