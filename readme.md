@@ -32,6 +32,10 @@ For CSE404-Group1 members
 * run this command to migrate(create tables) 
 
       php artisan migrate
+      
+* Now install the passport `oauth_clients` on to the created database. This should put 2 new entries in the `oauth_clients` table
+
+      php artisan passport:install 
 
 * now run the **API** with this command 
 
@@ -70,7 +74,7 @@ Body(example):
 		"is_premium" : false
 	}
       
-if the response is empty or error free, you should have a new entry on your `user` table.
+if successful a new entry in user table will be created and server will response the user details json
 
 ### Login
 
