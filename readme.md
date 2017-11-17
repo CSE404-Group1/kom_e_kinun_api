@@ -1,6 +1,14 @@
 # KomEKinun API (underconstruction)
 For CSE404-Group1 members
 
+## Contents
+- [How will you Setup this API](#how-will-you-setup-this-api)
+- [The API](#the-api)
+    - [Register](#register)
+    - [Login](#login)
+- [Errors you might have](#errors-you-might-have)
+    - [1071 specified key was too long](#1071-specified-key-was-too-long)
+
 ## How will you Setup this API.
 
 * First and foremost [install Laravel](https://laravel.com/docs/5.5/installation) and also [NodeJS](https://nodejs.org/en/download/)
