@@ -8,8 +8,8 @@ For CSE404-Group1 members
     - [Login](#login)
     - [Store Item](#store-item)
     - [Get Items](#get-items)
-    - [Get Items(Oldest First)](#get-Items(oldest-first))
-    - [Get Items(Price Limit)](#get-Items(price-limit))
+    - [Get Items by Oldest First](#get-items-by-oldest-first)
+    - [Get Items by Price Limit](#get-items-by-price-limit)
      
 - [Errors you might have](#errors-you-might-have)
     - [1071 specified key was too long](#1071-specified-key-was-too-long)
@@ -186,7 +186,7 @@ if the user is not authorized or if we dont send the `Authorization` header the 
           "error": "Unauthenticated."
       }
       
-### Get Item
+### Get Items
 
 To Get all the Items(Latest First) the url is: http://127.0.0.1:8000/api/items
 
@@ -199,7 +199,7 @@ Headers:
     
 The response would return an array of objects(items) where each item would contain **id**, **name**, **actual_price**, **sale_price**, **seller_id**, **brand_name** and **is_featured**. We'll use this api when indexing the items in a page.
 
-### Get Items(Oldest First)
+### Get Items by Oldest First
 
 To Get all the Items(Oldest First) the url is: http://127.0.0.1:8000/api/items/oldfirst
 
@@ -209,8 +209,8 @@ Headers:
 
     [{"key":"Accept","value":"application/json","description":""}]
     [{"key":"Content-Type","value":"application/json","description":""}]
-    
-### Get Items(Price Limit)
+   
+### Get Items by Price Limit
 
 To Get all the Items with price limit (min and max price) the url is: http://127.0.0.1:8000/api/items/pricelimit/{min}/{max}
 
