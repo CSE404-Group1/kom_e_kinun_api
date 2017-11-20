@@ -7,6 +7,10 @@ For CSE404-Group1 members
     - [Register](#register)
     - [Login](#login)
     - [Store Item](#store-item)
+    - [Get Items](#get-items)
+    - [Get Items(Oldest First)](#get-Items(oldest-first))
+    - [Get Items(Price Limit)](#get-Items(price-limit))
+     
 - [Errors you might have](#errors-you-might-have)
     - [1071 specified key was too long](#1071-specified-key-was-too-long)
 
@@ -181,6 +185,54 @@ if the user is not authorized or if we dont send the `Authorization` header the 
       {
           "error": "Unauthenticated."
       }
+      
+### Get Item
+
+To Get all the Items(Latest First) the url is: http://127.0.0.1:8000/api/items
+
+Request Type: **GET**
+
+Headers: 
+
+    [{"key":"Accept","value":"application/json","description":""}]
+    [{"key":"Content-Type","value":"application/json","description":""}]
+    
+The response would return an array of objects(items) where each item would contain **id**, **name**, **actual_price**, **sale_price**, **seller_id**, **brand_name** and **is_featured**. We'll use this api when indexing the items in a page.
+
+### Get Items(Oldest First)
+
+To Get all the Items(Oldest First) the url is: http://127.0.0.1:8000/api/items/oldfirst
+
+Request Type: **GET**
+
+Headers: 
+
+    [{"key":"Accept","value":"application/json","description":""}]
+    [{"key":"Content-Type","value":"application/json","description":""}]
+    
+### Get Items(Price Limit)
+
+To Get all the Items with price limit (min and max price) the url is: http://127.0.0.1:8000/api/items/pricelimit/{min}/{max}
+
+Request Type: **GET**
+
+Headers: 
+
+    [{"key":"Accept","value":"application/json","description":""}]
+    [{"key":"Content-Type","value":"application/json","description":""}]
+    
+Example: say you want all the items whose prices are between 200 to 500
+
+you'll send a get request to http://127.0.0.1:8000/api/items/pricelimit/200/500
+
+if you want all the items costing more than 200 
+
+the url would be http://127.0.0.1:8000/api/items/pricelimit/200
+
+if you want all the items under 500 
+
+the url would be http://127.0.0.1:8000/api/items/pricelimit/null/500
+    
 
 ____
 
