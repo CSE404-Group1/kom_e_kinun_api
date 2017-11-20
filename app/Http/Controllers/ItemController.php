@@ -10,24 +10,24 @@ class ItemController extends Controller
 {
 
     public function index(){
-        $items = Item::orderBy('created_at','desc')->get();
+        $items = Item::select('id','name','actual_price','sale_price','seller_id','brand_name','is_featured')->orderBy('created_at','desc')->get();
         return $items;
     }
 
     public function oldfirst()
     {
-        $items = Item::orderBy('created_at','asc')->get();
+        $items = Item::select('id','name','actual_price','sale_price','seller_id','brand_name','is_featured')->orderBy('created_at','asc')->get();
         return $items;
     }
 
     public function pricelimit($min = null, $max = null)
     {
         if ($min != null && $max != null) {
-          $items = Item::whereBetween('sale_price',[$min, $max])->get();
+          $items = Item::select('id','name','actual_price','sale_price','seller_id','brand_name','is_featured')->whereBetween('sale_price',[$min, $max])->get();
         }elseif ($min != null && $max == null) {
-          $items = Item::where('sale_price','>=',$min)->get();
+          $items = Item::select('id','name','actual_price','sale_price','seller_id','brand_name','is_featured')->where('sale_price','>=',$min)->get();
         }elseif ($min == null && $max != null) {
-          $items = Item::where('sale_price','<=',$max)->get();
+          $items = Item::select('id','name','actual_price','sale_price','seller_id','brand_name','is_featured')->where('sale_price','<=',$max)->get();
         }
 
         return $items;
