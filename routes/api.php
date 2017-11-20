@@ -20,5 +20,8 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 Route::post('/register', 'RegisterController@register');
 
 Route::group(['prefix' => 'items'], function(){
+  Route::get('/','ItemController@index');
+  Route::get('/oldfirst','ItemController@oldfirst');
+  Route::get('/pricelimit/{min?}/{max?}',['uses' => 'ItemController@pricelimit']);
   Route::post('/','ItemController@store')->middleware('auth:api');
 });

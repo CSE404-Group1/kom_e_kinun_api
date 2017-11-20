@@ -8,6 +8,31 @@ use App\Item;
 
 class ItemController extends Controller
 {
+
+    public function index(){
+        $items = Item::orderBy('created_at','desc')->get();
+        return $items;
+    }
+
+    public function oldfirst()
+    {
+        $items = Item::orderBy('created_at','asc')->get();
+        return $items;
+    }
+
+    public function pricelimit($min = null, $max = null)
+    {
+        if ($min != null && $max != null) {
+          $items = Item::whereBetween('sale_price',[$min, $max])->get();
+        }elseif ($min != null && $max == null) {
+          $items = Item::where('sale_price','>=',$min)->get();
+        }elseif ($min == null && $max != null) {
+          $items = Item::where('sale_price','<=',$max)->get();
+        }
+
+        return $items;
+    }
+
     public function store(StoreItemRequest $request)
     {
         $item = new Item;
