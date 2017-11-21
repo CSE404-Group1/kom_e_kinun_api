@@ -1,15 +1,17 @@
 # KomEKinun API (underconstruction)
-For CSE404-Group1 members
+For EPTABIT members
 
 ## Contents
 - [How will you Setup this API](#how-will-you-setup-this-api)
 - [The API](#the-api)
     - [Register](#register)
     - [Login](#login)
-    - [Store Item](#store-item)
+    - [Create Item](#create-item)
     - [Get Items](#get-items)
     - [Get Items by Oldest First](#get-items-by-oldest-first)
     - [Get Items by Price Limit](#get-items-by-price-limit)
+    - [Edit Item](#edit-item)
+    - [Delete Item](#delete-item)
      
 - [Errors you might have](#errors-you-might-have)
     - [1071 specified key was too long](#1071-specified-key-was-too-long)
@@ -144,10 +146,9 @@ This will return all the info we need,
         "updated_at": "2017-11-16 14:15:17"
     }
     
-### Store Item
+### Create Item
 
 To Store a new Item after logging in the Request url : http://127.0.0.1:8000/api/items
-> http://127.0.0.1:8000 is the default url when you run it on your computer
 
 Request Type: **POST**
 
@@ -232,7 +233,70 @@ the url would be http://127.0.0.1:8000/api/items/pricelimit/200
 if you want all the items under 500 
 
 the url would be http://127.0.0.1:8000/api/items/pricelimit/null/500
+
+### Edit Item
+
+
+To Update an existing Item after logging in the Request url : http://127.0.0.1:8000/api/items/{id}/edit
+
+Request Type: **POST**
+
+Headers: 
+
+    [{"key":"Accept","value":"application/json","description":""}]
+    [{"key":"Content-Type","value":"application/json","description":""}]
+    [{"key":"Authorization","value":"Bearer access_token","description":""}]
     
+Body(example): (same as create)
+
+      {
+		"name": "demoItem2",
+		"description": "",
+		"actual_price": 250.00,
+		"sale_price": 120.00,
+		"offer_start_date": "2017-11-15 23:59:59",
+		"offer_end_date": "2017-11-20 23:59:59",
+		"quantity": 20,
+		"offer_description" : "",
+		"brand_name" : "demo",
+		"product_origin_page" : "",
+		"catagory" : "demo",
+		"sub_catagory_1" : "sub-demo",
+		"sub_catagory_2" : "sub-demo",
+		"sub_catagory_3" : "sub-demo",
+		"keywords": "demo",
+		"is_featured" : false
+	}
+    
+if successful the entry in `items` table will be updated and server will response the Item details(json).
+
+if the user is not authorized or if we dont send the `Authorization` header the server will return 
+
+      {
+          "error": "Unauthenticated."
+      }
+      
+### Delete Item
+
+
+To Delete an existing Item after logging in the Request url : http://127.0.0.1:8000/api/items/{id}
+
+Request Type: **DELETE**
+
+Headers: 
+
+    [{"key":"Accept","value":"application/json","description":""}]
+    [{"key":"Content-Type","value":"application/json","description":""}]
+    [{"key":"Authorization","value":"Bearer access_token","description":""}]
+    
+    
+if successful the entry in `items` table will be Deleted and server will response **"Item deleted Successfully"**
+
+if the user is not authorized or if we dont send the `Authorization` header the server will return 
+
+      {
+          "error": "Unauthenticated."
+      }
 
 ____
 
@@ -249,3 +313,7 @@ edit your AppServiceProvider.php file and inside the boot method set a default s
         Schema::defaultStringLength(191);
     }
 
+
+
+
+>This Project and Document is developed, maintained and Owned by EPTABIT
