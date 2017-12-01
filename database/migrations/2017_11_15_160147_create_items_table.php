@@ -29,9 +29,9 @@ class CreateItemsTable extends Migration
             $table->string('product_origin_page')->nullable();
             $table->string('catagory');
             $table->string('sub_catagory_1');
-            $table->string('sub_catagory_2');
-            $table->string('sub_catagory_3');
-            $table->text('keywords');
+            $table->string('sub_catagory_2')->nullable();
+            $table->string('sub_catagory_3')->nullable();
+            $table->text('keywords')->nullable();
             $table->boolean('is_featured');
             $table->timestamps();
             $table->foreign('seller_id')->references('id')->on('users')->onDelete('cascade');

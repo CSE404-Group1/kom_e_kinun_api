@@ -22,8 +22,8 @@ class CreateUsersTable extends Migration
             $table->string('password');
             $table->text('description')->nullable();
             $table->string('phone_num');
-            $table->string('facebook_page');
-            $table->string('location');
+            $table->string('facebook_page')->nullable();
+            $table->string('location')->nullable();
             $table->string('website')->nullable();
             $table->boolean('is_superadmin');
             $table->boolean('is_seller');
