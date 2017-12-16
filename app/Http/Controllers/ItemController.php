@@ -33,6 +33,12 @@ class ItemController extends Controller
         return $items;
     }
 
+    public function indexbyseller($id){
+      $items = Item::select('id','name','actual_price','sale_price','seller_id','brand_name','created_at','is_featured')->where('seller_id', $id)->get();
+
+      return $items;
+    }
+
     public function store(StoreItemRequest $request)
     {
         $item = new Item;

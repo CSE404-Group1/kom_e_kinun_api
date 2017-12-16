@@ -25,6 +25,8 @@ Route::group(['prefix' => 'items'], function(){
   Route::get('/oldfirst','ItemController@oldfirst');
   Route::get('/pricelimit/{min?}/{max?}',['uses' => 'ItemController@pricelimit']);
 
+  Route::get('/seller/{id}', 'ItemController@indexbyseller');
+
   // GET SINGLE ITEM
   Route::get('/{id}','ItemController@show');
 
