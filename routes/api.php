@@ -33,6 +33,9 @@ Route::group(['prefix' => 'items'], function(){
   // ADD ITEM
   Route::post('/','ItemController@store')->middleware('auth:api');
 
+  // ADD ITEM IMAGE
+  Route::post('/img/{itemid}','ItemController@storeitemimage')->middleware('cors');
+
   // UPDATE ITEM
   Route::post('/{id}/edit','ItemController@update')->middleware('auth:api');
 

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Http\Requests\StoreItemRequest;
 use App\Item;
+use Illuminate\Support\Facades\Storage;
 
 class ItemController extends Controller
 {
@@ -62,7 +63,19 @@ class ItemController extends Controller
 
         $item->save();
 
-        return $item;
+        return $item->id;
+    }
+
+    public function storeitemimage(Request $request, $itemid){
+
+        Storage::putFile('public',$request->file('image'));
+        $file_url = Storage::url($request->file('image')->hashName());
+
+        $item = Item::find($itemid);
+        $item->image = $file_url;
+        $item->save();
+
+        return json_encode($item->image);
     }
 
     public function show($id)
