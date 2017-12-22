@@ -67,15 +67,19 @@ class ItemController extends Controller
     }
 
     public function storeitemimage(Request $request, $itemid){
+          $storagePath = Storage::putFile('public',$request->image);
 
-        Storage::putFile('public',$request->file('image'));
-        $file_url = Storage::url($request->file('image')->hashName());
+          $imagename = $request->image->getClientOriginalName();
 
-        $item = Item::find($itemid);
-        $item->image = $file_url;
-        $item->save();
+          $imageurl = Storage::url($imagename);
 
-        return json_encode($item->image);
+          $item = Item::find($itemid);
+          $item->image = $storagePath;
+          $item->save();
+
+
+
+          return json_encode($imageurl);
     }
 
     public function show($id)
