@@ -11,31 +11,31 @@ class ItemController extends Controller
 {
 
     public function index(){
-        $items = Item::select('id','name','actual_price','sale_price','seller_id','brand_name','is_featured')->orderBy('created_at','desc')->get();
+        $items = Item::select('id','name','image','actual_price','sale_price','seller_id','brand_name','is_featured')->orderBy('created_at','desc')->get();
         return $items;
     }
 
     public function oldfirst()
     {
-        $items = Item::select('id','name','actual_price','sale_price','seller_id','brand_name','is_featured')->orderBy('created_at','asc')->get();
+        $items = Item::select('id','name','image','actual_price','sale_price','seller_id','brand_name','is_featured')->orderBy('created_at','asc')->get();
         return $items;
     }
 
     public function pricelimit($min = null, $max = null)
     {
         if ($min != null && $max != null) {
-          $items = Item::select('id','name','actual_price','sale_price','seller_id','brand_name','is_featured')->whereBetween('sale_price',[$min, $max])->get();
+          $items = Item::select('id','name','image','actual_price','sale_price','seller_id','brand_name','is_featured')->whereBetween('sale_price',[$min, $max])->orderBy('created_at','desc')->get();
         }elseif ($min != null && $max == null) {
-          $items = Item::select('id','name','actual_price','sale_price','seller_id','brand_name','is_featured')->where('sale_price','>=',$min)->get();
+          $items = Item::select('id','name','image','actual_price','sale_price','seller_id','brand_name','is_featured')->where('sale_price','>=',$min)->orderBy('created_at','desc')->get();
         }elseif ($min == null && $max != null) {
-          $items = Item::select('id','name','actual_price','sale_price','seller_id','brand_name','is_featured')->where('sale_price','<=',$max)->get();
+          $items = Item::select('id','name','image','actual_price','sale_price','seller_id','brand_name','is_featured')->where('sale_price','<=',$max)->orderBy('created_at','desc')->get();
         }
 
         return $items;
     }
 
     public function indexbyseller($id){
-      $items = Item::select('id','name','actual_price','sale_price','seller_id','brand_name','created_at','is_featured')->where('seller_id', $id)->get();
+      $items = Item::select('id','name','image','actual_price','sale_price','seller_id','brand_name','created_at','is_featured')->where('seller_id', $id)->orderBy('created_at','desc')->get();
 
       return $items;
     }
