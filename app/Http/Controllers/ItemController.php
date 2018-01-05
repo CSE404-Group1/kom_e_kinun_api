@@ -40,6 +40,23 @@ class ItemController extends Controller
       return $items;
     }
 
+    public function indexbycategory($cate){
+      $cate_sub_string = explode("_", $cate);
+      $category = join(" ",$cate_sub_string);
+
+      $items = Item::select('id','name','image','actual_price','sale_price','seller_id','brand_name','is_featured')->where('catagory',$category)->get();
+
+      return $items;
+    }
+    public function indexbysubcategory1($subcate1){
+      $cate_sub_string = explode("_", $subcate1);
+      $category = join(" ",$cate_sub_string);
+
+      $items = Item::select('id','name','image','actual_price','sale_price','seller_id','brand_name','is_featured')->where('sub_catagory_1',$category)->get();
+
+      return $items;
+    }
+
     public function store(StoreItemRequest $request)
     {
         $item = new Item;
