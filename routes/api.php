@@ -24,8 +24,11 @@ Route::group(['prefix' => 'items'], function(){
   Route::get('/','ItemController@index');
   Route::get('/oldfirst','ItemController@oldfirst');
   Route::get('/pricelimit/{min?}/{max?}',['uses' => 'ItemController@pricelimit']);
+
+  // GET ITEM BY CATEGORY
   Route::get('/category/{cate}','ItemController@indexbycategory');
   Route::get('/subcategory1/{subcate1}','ItemController@indexbysubcategory1');
+  Route::get('/subcategory2/{subcate2}','ItemController@indexbysubcategory2');
 
   Route::get('/seller/{id}', 'ItemController@indexbyseller');
 

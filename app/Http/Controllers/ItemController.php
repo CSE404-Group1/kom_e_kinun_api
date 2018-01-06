@@ -40,6 +40,7 @@ class ItemController extends Controller
       return $items;
     }
 
+    // INDEX BY CATEGORY
     public function indexbycategory($cate){
       $cate_sub_string = explode("_", $cate);
       $category = join(" ",$cate_sub_string);
@@ -53,6 +54,14 @@ class ItemController extends Controller
       $category = join(" ",$cate_sub_string);
 
       $items = Item::select('id','name','image','actual_price','sale_price','seller_id','brand_name','is_featured')->where('sub_catagory_1',$category)->get();
+
+      return $items;
+    }
+    public function indexbysubcategory2($subcate2){
+      $cate_sub_string = explode("_", $subcate2);
+      $category = join(" ",$cate_sub_string);
+
+      $items = Item::select('id','name','image','actual_price','sale_price','seller_id','brand_name','is_featured')->where('sub_catagory_2',$category)->get();
 
       return $items;
     }
